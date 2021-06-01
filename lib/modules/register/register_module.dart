@@ -8,7 +8,7 @@ class RegisterModule extends Module {
   @override
   final List<Bind> binds = [
     Bind((i) => RegisterRepository()),
-    Bind((i) => RegisterController()),
+    Bind((i) => RegisterController(i())),
   ];
 
   @override
