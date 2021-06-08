@@ -35,10 +35,13 @@ class _PostsPageState extends ModularState<PostsPage, PostsController> {
 
   Widget _buildPostList() {
     return Observer(builder: (_) {
-      return ListView.builder(
-        padding: const EdgeInsets.all(20.0),
-        itemCount: controller.length,
-        itemBuilder: _buildPostCard,
+      return RefreshIndicator(
+        onRefresh: controller.fetch,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(20.0),
+          itemCount: controller.length,
+          itemBuilder: _buildPostCard,
+        ),
       );
     });
   }

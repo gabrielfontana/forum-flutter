@@ -8,9 +8,14 @@ class PostsRepository {
   Future<Either<Failure, bool>> createPost(PostModel post) async {
     try {
       final data = ParseObject('Post')
-        ..set('title', post.title)
-        ..set('description', post.description)
-        ..set('userId', post.userId);
+        ..set('title', post.title.trim())
+        ..set('description', post.description.trim())
+        ..set('views', 0)
+        ..set(
+          'userId',
+          (await ParseUser.currentUser()).toPointer(),
+        );
+
       final response = await data.save();
       return Right(response.success);
     } on Exception catch (error) {
