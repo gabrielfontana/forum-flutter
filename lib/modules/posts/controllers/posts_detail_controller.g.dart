@@ -39,12 +39,35 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
     });
   }
 
+  final _$postAtom = Atom(name: '_PostsControllerBase.post');
+
+  @override
+  PostModel? get post {
+    _$postAtom.reportRead();
+    return super.post;
+  }
+
+  @override
+  set post(PostModel? value) {
+    _$postAtom.reportWrite(value, super.post, () {
+      super.post = value;
+    });
+  }
+
   final _$createCommentAsyncAction =
       AsyncAction('_PostsControllerBase.createComment');
 
   @override
   Future<dynamic> createComment() {
     return _$createCommentAsyncAction.run(() => super.createComment());
+  }
+
+  final _$incrementViewsAsyncAction =
+      AsyncAction('_PostsControllerBase.incrementViews');
+
+  @override
+  Future<dynamic> incrementViews() {
+    return _$incrementViewsAsyncAction.run(() => super.incrementViews());
   }
 
   final _$fetchCommentsByPostIdAsyncAction =
@@ -71,10 +94,22 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
   }
 
   @override
+  void setPost(dynamic value) {
+    final _$actionInfo = _$_PostsControllerBaseActionController.startAction(
+        name: '_PostsControllerBase.setPost');
+    try {
+      return super.setPost(value);
+    } finally {
+      _$_PostsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 commentsList: ${commentsList},
-comment: ${comment}
+comment: ${comment},
+post: ${post}
     ''';
   }
 }

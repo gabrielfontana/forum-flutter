@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:forum/core/helpers/date_helper.dart';
-import 'package:forum/core/helpers/string_helper.dart';
-import 'package:forum/core/widgets/images/circle_avatar_network.dart';
 import 'package:forum/modules/posts/models/post_model.dart';
+import 'package:forum/modules/posts/widgets/post_header.dart';
 
 class PostCard extends StatelessWidget {
   final PostModel post;
@@ -24,7 +21,7 @@ class PostCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildHeader(),
+            PostHeader(post: post),
             Text(post.title),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -47,45 +44,12 @@ class PostCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
-    return Container(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: Row(
-        children: [
-          CircleAvatarNetwork(
-            imageUrl: '',
-            initials: StringHelper.getInitials('Gabriel Fontana'),
-            radius: 24,
-          ),
-          const SizedBox(width: 20),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text('Gabriel Fontana'),
-                const SizedBox(height: 4),
-                Text(DateHelper.format(post.date!)),
-              ],
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_outline,
-              size: 32,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildLikes() {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Text('200'),
+          Text('${post.votesAmount ?? 0}'),
           const SizedBox(width: 10.0),
           const Icon(Icons.favorite_outline),
         ],
@@ -98,7 +62,7 @@ class PostCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('500'),
+          Text('${post.commentsAmount ?? 0}'),
           const SizedBox(width: 10.0),
           const Icon(Icons.comment_outlined),
         ],
@@ -111,7 +75,7 @@ class PostCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text('${post.views}'),
+          Text('${post.viewsAmount}'),
           const SizedBox(width: 10.0),
           const Icon(Icons.visibility_outlined),
         ],

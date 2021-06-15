@@ -60,17 +60,10 @@ class _PostsEditorPageState
   }
 
   void _onSuccess(bool success) {
-    if (success) {
-      Modular.to.navigate('/home/posts');
-      SnackBarHelper.showSuccessMessage(
-        context,
-        message: 'Dúvida criada com sucesso',
-      );
-    } else {
-      SnackBarHelper.showFailureMessage(
-        context,
-        message: 'Problema ao tentar criar nova dúvida',
-      );
-    }
+    Modular.to.navigate('/home/posts');
+    SnackBarHelper.showFailureMessage(
+      context,
+      message: 'Problema ao tentar criar nova dúvida',
+    );
   }
 }

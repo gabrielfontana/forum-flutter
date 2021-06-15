@@ -5,6 +5,17 @@ import 'package:forum/modules/posts/models/post_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class PostsRepository {
+  Future<Either<Failure, bool>> incrementPostView(PostModel post) async {
+    try {
+      final data = ParseObject('Post')..objectId = post.id;
+      data.setIncrement('views', 1);
+      final response = await data.update();
+      return Right(response.success);
+    } on Exception catch (error) {
+      return Left(ServerError(error.toString()));
+    }
+  }
+
   Future<Either<Failure, bool>> createPost(PostModel post) async {
     try {
       final data = ParseObject('Post')
@@ -48,13 +59,24 @@ class PostsRepository {
 
   Future<Either<Failure, List<PostModel>>> readPosts() async {
     try {
-      final builder = QueryBuilder<ParseObject>(ParseObject('Post'));
-      builder.orderByDescending('createdAt');
-      final response = await builder.query();
-      if (response.success && response.results != null) {
-        final list = response.results as List<ParseObject>;
-        final result = list.map((post) => PostModel.fromMap(post)).toList();
-        return Right(result);
+      final postBuilder = QueryBuilder<ParseObject>(ParseObject('Post'));
+      postBuilder.orderByDescending('createdAt');
+
+      final postResponse = await postBuilder.query();
+      if (postResponse.success && postResponse.results != null) {
+        final list = postResponse.results as List<ParseObject>;
+        final postList = list.map((post) => PostModel.fromMap(post)).toList();
+
+        postList.forEach((post) async {
+          final userBuilder = QueryBuilder<ParseUser>(ParseUser.forQuery())
+            ..whereEqualTo('objectId', post.userId);
+          final userResponse = await userBuilder.query();
+          final user = userResponse.results!.first as ParseUser;
+          post.name = user.get('name');
+          post.name = user.get('avatar');
+        });
+
+        return Right(postList);
       } else {
         return const Right(<PostModel>[]);
       }
