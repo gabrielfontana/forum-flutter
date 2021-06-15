@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:forum/core/widgets/appbars/simple_appbar.dart';
 import 'package:forum/modules/posts/controllers/posts_controller.dart';
+import 'package:forum/modules/posts/models/post_model.dart';
 import 'package:forum/modules/posts/widgets/post_card.dart';
 
 class PostsPage extends StatefulWidget {
@@ -48,6 +49,13 @@ class _PostsPageState extends ModularState<PostsPage, PostsController> {
 
   Widget _buildPostCard(BuildContext context, int index) {
     final post = controller.postList[index];
-    return PostCard(post: post);
+    return PostCard(
+      post: post,
+      onPressed: _onOpenPost,
+    );
+  }
+
+  void _onOpenPost(PostModel post) {
+    Modular.to.pushNamed('/home/posts/detail', arguments: post);
   }
 }

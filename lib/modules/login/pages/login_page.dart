@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:forum/core/helpers/snackbar_helper.dart';
 import 'package:forum/core/widgets/appbars/simple_appbar.dart';
+import 'package:forum/core/widgets/buttons/align_text_button.dart';
 import 'package:forum/core/widgets/buttons/primary_button.dart';
 import 'package:forum/core/widgets/buttons/secondary_button.dart';
 import 'package:forum/core/widgets/dialogs/loading_dialog.dart';
@@ -34,6 +35,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           initialValue: controller.password,
           onSaved: controller.setPassword,
         ),
+        AlignTextbutton(
+            label: 'Esqueceu a senha?',
+            onPressed: () => Modular.to.pushNamed('/reset'),
+            alignment: Alignment.centerRight),
         PrimaryButton(label: 'Entrar', onPressed: _onLogin),
         SecondaryButton(label: 'Registrar', onPressed: _onRegister),
       ],

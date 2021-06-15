@@ -3,7 +3,6 @@ import 'package:forum/core/configs/app_errors.dart';
 import 'package:forum/modules/posts/models/post_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:forum/modules/posts/repositories/posts_repository.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 part 'posts_editor_controller.g.dart';
 
 class PostsEditorController = _PostsEditorControllerBase

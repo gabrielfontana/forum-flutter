@@ -21,6 +21,17 @@ class SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
+      child: TextButton(
+        onPressed: onPressed,
+        child: Text(
+          label.toUpperCase(),
+          style: const TextStyle(
+            color: AppColors.primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      /*
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -39,6 +50,7 @@ class SecondaryButton extends StatelessWidget {
           ),
         ),
       ),
+      */
     );
   }
 }

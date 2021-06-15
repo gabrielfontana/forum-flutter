@@ -17,6 +17,12 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   @override
+  void initState() {
+    super.initState();
+    controller.getCurrentUserData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
@@ -28,7 +34,7 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
                 return ProfileHeaderTile(
                   name: controller.name,
                   email: controller.email,
-                  pictureUrl: controller.pictureUrl,
+                  pictureUrl: controller.avatar,
                 );
               },
             ),

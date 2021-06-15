@@ -10,13 +10,23 @@ abstract class _ProfileControllerBase with Store {
   _ProfileControllerBase(this._repository);
 
   @observable
-  String name = 'Gabriel Fontana';
+  String name = '';
 
   @observable
-  String email = 'gabrielf.junqueira74@gmail.com';
+  String email = '';
 
   @observable
-  String pictureUrl = '';
+  String avatar = '';
+
+  @action
+  Future<void> getCurrentUserData() async {
+    final result = await _repository.getCurrentUserData();
+    result.fold((_) => null, (user) {
+      name = user.name;
+      email = user.email;
+      avatar = user.avatar;
+    });
+  }
 
   @action
   Future logout() async {

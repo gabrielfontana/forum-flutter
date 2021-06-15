@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:forum/core/helpers/date_helper.dart';
 import 'package:forum/core/helpers/string_helper.dart';
 import 'package:forum/core/widgets/images/circle_avatar_network.dart';
@@ -6,15 +7,18 @@ import 'package:forum/modules/posts/models/post_model.dart';
 
 class PostCard extends StatelessWidget {
   final PostModel post;
+  final Function(PostModel) onPressed;
 
   const PostCard({
     Key? key,
     required this.post,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return InkWell(
+      onTap: () => onPressed(post),
       child: Container(
         padding: const EdgeInsets.all(20.0),
         child: Column(
