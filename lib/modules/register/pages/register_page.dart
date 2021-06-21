@@ -18,12 +18,11 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState
     extends ModularState<RegisterPage, RegisterController> {
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return FormScaffold(
-      formKey: _formKey,
       appBar: const SimpleAppBar(title: 'Registro'),
+      formKey: _formKey,
       children: [
         TextInputField(
           label: 'Nome',
@@ -41,7 +40,7 @@ class _RegisterPageState
           onSaved: controller.setPassword,
         ),
         PasswordInputField.confirm(
-          label: 'Confirmar Senha',
+          label: 'Confirmar senha',
           initialValue: controller.confirmPassword,
           onSaved: controller.setConfirmPassword,
         ),
@@ -66,7 +65,7 @@ class _RegisterPageState
     SnackBarHelper.showFailureMessage(context, message: failure.toString());
   }
 
-  void _onSuccess(success) {
+  void _onSuccess(user) {
     Modular.to.pop();
     SnackBarHelper.showSuccessMessage(context, message: 'Sucesso!');
   }

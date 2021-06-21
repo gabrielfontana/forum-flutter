@@ -7,7 +7,7 @@ import 'package:forum/core/helpers/snackbar_helper.dart';
 import 'package:forum/core/widgets/dialogs/loading_dialog.dart';
 import 'package:forum/core/widgets/dialogs/logout_dialog.dart';
 import 'package:forum/core/widgets/tiles/action_tile.dart';
-import 'package:forum/modules/profile/controlles/profile.controller.dart';
+import 'package:forum/modules/profile/controlles/profile_controller.dart';
 import 'package:forum/modules/profile/widgets/account_header_tile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -29,22 +29,20 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
       body: Container(
         child: Column(
           children: [
-            Observer(
-              builder: (_) {
-                return ProfileHeaderTile(
-                  name: controller.name,
-                  email: controller.email,
-                  pictureUrl: controller.avatar,
-                );
-              },
-            ),
+            Observer(builder: (_) {
+              return ProfileHeaderTile(
+                name: controller.name,
+                email: controller.email,
+                pictureUrl: controller.avatar,
+              );
+            }),
             const Divider(color: AppColors.white),
-            _buildPersonalDataTile(),
-            _buildNotificationsTile(),
-            _buildSettingsTile(),
+            _buildPersonDataTile(),
+            _buildNotificationTile(),
             _buildFaqTile(),
+            _buildSettingsTile(),
             const Divider(color: AppColors.white),
-            _buildPrivacyPolicyTile(),
+            _buildPrvacyPolicyTile(),
             _buildAboutTile(),
             const Divider(color: AppColors.white),
             _buildLogoutTile(),
@@ -54,10 +52,10 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
     );
   }
 
-  ActionTile _buildPersonalDataTile() {
+  ActionTile _buildPrvacyPolicyTile() {
     return ActionTile.next(
-      title: 'Dados pessoais',
-      prefixIcon: Icons.person_outlined,
+      title: 'Política de Privacidade',
+      prefixIcon: Icons.verified_user_outlined,
       iconColor: AppColors.white,
       backgroundColor: AppColors.transparent,
       brightness: ActionTileBrightness.dart,
@@ -65,7 +63,18 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
     );
   }
 
-  ActionTile _buildNotificationsTile() {
+  ActionTile _buildPersonDataTile() {
+    return ActionTile.next(
+      title: 'Dados pessoais',
+      prefixIcon: Icons.person_outline,
+      iconColor: AppColors.white,
+      backgroundColor: AppColors.transparent,
+      brightness: ActionTileBrightness.dart,
+      onTap: () {},
+    );
+  }
+
+  ActionTile _buildNotificationTile() {
     return ActionTile.next(
       title: 'Notificações',
       prefixIcon: Icons.notifications_none_outlined,
@@ -79,9 +88,9 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   ActionTile _buildSettingsTile() {
     return ActionTile.next(
       title: 'Configurações',
-      backgroundColor: AppColors.transparent,
       prefixIcon: Icons.settings_outlined,
       iconColor: AppColors.white,
+      backgroundColor: AppColors.transparent,
       brightness: ActionTileBrightness.dart,
       onTap: () {},
     );
@@ -90,20 +99,9 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   ActionTile _buildFaqTile() {
     return ActionTile.next(
       title: 'Dúvidas',
-      backgroundColor: AppColors.transparent,
-      prefixIcon: Icons.help_outlined,
+      prefixIcon: Icons.help_outline,
       iconColor: AppColors.white,
-      brightness: ActionTileBrightness.dart,
-      onTap: () {},
-    );
-  }
-
-  ActionTile _buildPrivacyPolicyTile() {
-    return ActionTile.next(
-      title: 'Política de Privacidade',
       backgroundColor: AppColors.transparent,
-      prefixIcon: Icons.verified_user_outlined,
-      iconColor: AppColors.white,
       brightness: ActionTileBrightness.dart,
       onTap: () {},
     );
@@ -111,10 +109,10 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
 
   ActionTile _buildAboutTile() {
     return ActionTile.next(
-      title: 'Sobre o aplicativo',
-      backgroundColor: AppColors.transparent,
-      prefixIcon: Icons.info_outlined,
+      title: 'Sobre o app',
+      prefixIcon: Icons.info_outline,
       iconColor: AppColors.white,
+      backgroundColor: AppColors.transparent,
       brightness: ActionTileBrightness.dart,
       onTap: () {},
     );
@@ -123,9 +121,9 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   ActionTile _buildLogoutTile() {
     return ActionTile(
       title: 'Sair',
-      backgroundColor: AppColors.transparent,
-      prefixIcon: Icons.logout_outlined,
+      prefixIcon: Icons.exit_to_app_outlined,
       iconColor: AppColors.white,
+      backgroundColor: AppColors.transparent,
       brightness: ActionTileBrightness.dart,
       onTap: _onLogout,
     );
@@ -134,7 +132,7 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   Future _onLogout() async {
     final result = await LogoutDialog.show(context);
     if (result) {
-      LoadingDialog.show(context, message: 'Saindo...');
+      LoadingDialog.show(context, message: 'Desconectando...');
       final result = await controller.logout();
       LoadingDialog.hide();
       result.fold(_onLogoutFailure, _onLogoutSuccess);

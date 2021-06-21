@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:forum/modules/profile/controlles/profile.controller.dart';
+import 'package:forum/modules/profile/controlles/profile_controller.dart';
 import 'package:forum/modules/profile/pages/profile_page.dart';
 import 'package:forum/modules/profile/repositories/profile_repository.dart';
 

@@ -22,6 +22,7 @@ class CurrentUserModel extends Equatable {
       avatar: map.get('avatar'),
     );
   }
+
   @override
   List<Object?> get props => [uid, name, email, avatar];
 }

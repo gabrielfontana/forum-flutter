@@ -7,7 +7,7 @@ class ProfileRepository {
   Future<Either<Failure, bool>> logout() async {
     try {
       final user = await ParseUser.currentUser();
-      var response = await user.logout();
+      final response = await user.logout();
       if (response.success) {
         return const Right(true);
       } else {

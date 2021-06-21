@@ -15,15 +15,14 @@ class ResetPage extends StatefulWidget {
 
 class _ResetPageState extends ModularState<ResetPage, ResetController> {
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return FormScaffold(
+      appBar: const SimpleAppBar(title: 'Redefinir senha'),
       formKey: _formKey,
-      appBar: const SimpleAppBar(title: 'Redefinir de senha'),
       children: [
         EmailInputField(
-          label: 'Email',
+          label: 'E-mail',
           initialValue: controller.email,
           onSaved: controller.setEmail,
         ),
@@ -48,7 +47,7 @@ class _ResetPageState extends ModularState<ResetPage, ResetController> {
     SnackBarHelper.showFailureMessage(context, message: failure.toString());
   }
 
-  void _onSuccess(success) {
+  void _onSuccess(user) {
     Modular.to.pop();
     SnackBarHelper.showSuccessMessage(context, message: 'Sucesso!');
   }
