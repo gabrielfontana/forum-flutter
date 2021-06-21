@@ -8,8 +8,9 @@ part of 'posts_detail_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$PostsDetailController on _PostsControllerBase, Store {
-  final _$commentsListAtom = Atom(name: '_PostsControllerBase.commentsList');
+mixin _$PostsDetailController on _PostsDetailControllerBase, Store {
+  final _$commentsListAtom =
+      Atom(name: '_PostsDetailControllerBase.commentsList');
 
   @override
   ObservableList<CommentModel> get commentsList {
@@ -24,7 +25,7 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
     });
   }
 
-  final _$commentAtom = Atom(name: '_PostsControllerBase.comment');
+  final _$commentAtom = Atom(name: '_PostsDetailControllerBase.comment');
 
   @override
   String get comment {
@@ -39,7 +40,7 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
     });
   }
 
-  final _$postAtom = Atom(name: '_PostsControllerBase.post');
+  final _$postAtom = Atom(name: '_PostsDetailControllerBase.post');
 
   @override
   PostModel? get post {
@@ -55,7 +56,7 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
   }
 
   final _$createCommentAsyncAction =
-      AsyncAction('_PostsControllerBase.createComment');
+      AsyncAction('_PostsDetailControllerBase.createComment');
 
   @override
   Future<dynamic> createComment() {
@@ -63,7 +64,7 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
   }
 
   final _$incrementViewsAsyncAction =
-      AsyncAction('_PostsControllerBase.incrementViews');
+      AsyncAction('_PostsDetailControllerBase.incrementViews');
 
   @override
   Future<dynamic> incrementViews() {
@@ -71,7 +72,7 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
   }
 
   final _$fetchCommentsByPostIdAsyncAction =
-      AsyncAction('_PostsControllerBase.fetchCommentsByPostId');
+      AsyncAction('_PostsDetailControllerBase.fetchCommentsByPostId');
 
   @override
   Future<dynamic> fetchCommentsByPostId() {
@@ -79,28 +80,28 @@ mixin _$PostsDetailController on _PostsControllerBase, Store {
         .run(() => super.fetchCommentsByPostId());
   }
 
-  final _$_PostsControllerBaseActionController =
-      ActionController(name: '_PostsControllerBase');
+  final _$_PostsDetailControllerBaseActionController =
+      ActionController(name: '_PostsDetailControllerBase');
 
   @override
   void setComment(dynamic value) {
-    final _$actionInfo = _$_PostsControllerBaseActionController.startAction(
-        name: '_PostsControllerBase.setComment');
+    final _$actionInfo = _$_PostsDetailControllerBaseActionController
+        .startAction(name: '_PostsDetailControllerBase.setComment');
     try {
       return super.setComment(value);
     } finally {
-      _$_PostsControllerBaseActionController.endAction(_$actionInfo);
+      _$_PostsDetailControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setPost(dynamic value) {
-    final _$actionInfo = _$_PostsControllerBaseActionController.startAction(
-        name: '_PostsControllerBase.setPost');
+    final _$actionInfo = _$_PostsDetailControllerBaseActionController
+        .startAction(name: '_PostsDetailControllerBase.setPost');
     try {
       return super.setPost(value);
     } finally {
-      _$_PostsControllerBaseActionController.endAction(_$actionInfo);
+      _$_PostsDetailControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

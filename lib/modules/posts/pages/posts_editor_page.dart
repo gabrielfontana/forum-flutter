@@ -40,7 +40,7 @@ class _PostsEditorPageState
         PrimaryButton(
           label: 'Salvar',
           onPressed: _onSave,
-        )
+        ),
       ],
     );
   }

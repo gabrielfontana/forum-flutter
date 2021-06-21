@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forum/core/helpers/services_helper.dart';
-
-import 'action_tile.dart';
+import 'package:forum/core/widgets/tiles/action_tile.dart';
 
 class EmailTile extends StatelessWidget {
   final String title;

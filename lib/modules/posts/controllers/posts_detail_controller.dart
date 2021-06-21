@@ -7,16 +7,14 @@ import 'package:forum/modules/posts/repositories/posts_repository.dart';
 
 part 'posts_detail_controller.g.dart';
 
-class PostsDetailController = _PostsControllerBase with _$PostsDetailController;
+class PostsDetailController = _PostsDetailControllerBase
+    with _$PostsDetailController;
 
-abstract class _PostsControllerBase with Store {
+abstract class _PostsDetailControllerBase with Store {
   final PostsRepository _repository;
   final User _user;
 
-  _PostsControllerBase(
-    this._repository,
-    this._user,
-  );
+  _PostsDetailControllerBase(this._repository, this._user);
 
   @observable
   ObservableList<CommentModel> commentsList = ObservableList.of([]);

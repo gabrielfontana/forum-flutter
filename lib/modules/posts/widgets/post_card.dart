@@ -16,42 +16,44 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onPressed(post),
-      child: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            PostHeader(post: post),
-            Text(post.title),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Text(post.description),
-            ),
-            const Divider(height: 0.0),
-            Container(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Row(
-                children: [
-                  _buildLikes(),
-                  _buildComments(),
-                  _buildViews(),
-                ],
+      child: Card(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              PostHeader(post: post),
+              Text(post.title),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Text(post.description),
               ),
-            ),
-          ],
+              const Divider(height: 0.0),
+              Container(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Row(
+                  children: [
+                    _buildLikes(),
+                    _buildComments(),
+                    _buildViews(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildLikes() {
+  Widget _buildViews() {
     return Expanded(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text('${post.votesAmount ?? 0}'),
+          Text('${post.viewsAmount ?? 0}'),
           const SizedBox(width: 10.0),
-          const Icon(Icons.favorite_outline),
+          const Icon(Icons.visibility_outlined),
         ],
       ),
     );
@@ -70,14 +72,14 @@ class PostCard extends StatelessWidget {
     );
   }
 
-  Widget _buildViews() {
+  Widget _buildLikes() {
     return Expanded(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('${post.viewsAmount}'),
+          Text('${post.votesAmount ?? 0}'),
           const SizedBox(width: 10.0),
-          const Icon(Icons.visibility_outlined),
+          const Icon(Icons.favorite_outline),
         ],
       ),
     );

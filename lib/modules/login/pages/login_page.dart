@@ -35,10 +35,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           initialValue: controller.password,
           onSaved: controller.setPassword,
         ),
-        AlignTextbutton(
-            label: 'Esqueceu a senha?',
-            onPressed: () => Modular.to.pushNamed('/reset'),
-            alignment: Alignment.centerRight),
+        AlignTextButton(
+          label: 'Esqueceu a senha?',
+          onPressed: () => Modular.to.pushNamed('/reset'),
+          alignment: Alignment.centerRight,
+        ),
         PrimaryButton(label: 'Entrar', onPressed: _onLogin),
         SecondaryButton(label: 'Registrar', onPressed: _onRegister),
       ],
@@ -62,7 +63,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     SnackBarHelper.showFailureMessage(context, message: failure.toString());
   }
 
-  void _onSuccess(success) {
+  void _onSuccess(user) {
     Modular.to.navigate('/home');
   }
 }

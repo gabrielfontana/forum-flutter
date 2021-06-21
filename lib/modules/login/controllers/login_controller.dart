@@ -4,7 +4,6 @@ import 'package:forum/core/global/user.dart';
 import 'package:forum/modules/login/models/credential_model.dart';
 import 'package:forum/modules/login/models/user_model.dart';
 import 'package:mobx/mobx.dart';
-
 import 'package:forum/modules/login/repositories/login_repository.dart';
 
 part 'login_controller.g.dart';

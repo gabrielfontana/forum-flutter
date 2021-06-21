@@ -23,8 +23,8 @@ class PostModel extends Equatable {
     this.viewsAmount,
     this.votesAmount,
     this.commentsAmount,
-    this.name,
     this.avatar,
+    this.name,
   });
 
   factory PostModel.fromMap(ParseObject map) {

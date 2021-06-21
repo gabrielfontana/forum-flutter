@@ -4,7 +4,6 @@ import 'package:forum/modules/posts/pages/posts_detail_page.dart';
 import 'package:forum/modules/posts/pages/posts_editor_page.dart';
 import 'package:forum/modules/posts/pages/posts_page.dart';
 import 'package:forum/modules/posts/repositories/posts_repository.dart';
-
 import 'controllers/posts_detail_controller.dart';
 import 'controllers/posts_editor_controller.dart';
 

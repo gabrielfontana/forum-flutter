@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:forum/core/helpers/date_helper.dart';
 import 'package:forum/core/helpers/string_helper.dart';
 import 'package:forum/core/widgets/images/circle_avatar_network.dart';
-
 import 'package:forum/modules/posts/models/post_model.dart';
 
 class PostHeader extends StatelessWidget {
@@ -18,7 +17,7 @@ class PostHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: [
           CircleAvatarNetwork(

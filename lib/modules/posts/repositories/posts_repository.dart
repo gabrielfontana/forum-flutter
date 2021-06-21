@@ -22,10 +22,7 @@ class PostsRepository {
         ..set('title', post.title.trim())
         ..set('description', post.description.trim())
         ..set('views', 0)
-        ..set(
-          'userId',
-          (await ParseUser.currentUser()).toPointer(),
-        );
+        ..set('userId', (await ParseUser.currentUser()).toPointer());
 
       final response = await data.save();
       return Right(response.success);
@@ -73,7 +70,7 @@ class PostsRepository {
           final userResponse = await userBuilder.query();
           final user = userResponse.results!.first as ParseUser;
           post.name = user.get('name');
-          post.name = user.get('avatar');
+          post.avatar = user.get('avatar');
         });
 
         return Right(postList);

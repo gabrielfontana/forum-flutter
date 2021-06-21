@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   const AppColors._();
 
-  static const primaryColor = Colors.cyan;
+  static const primaryColor = Colors.deepPurple;
   static const scaffoldColor = Color(0xFFF9F9F9);
 
   static const white = Color(0xFFFFFFFF);
@@ -13,5 +13,5 @@ class AppColors {
   static final shimmerBaseColor = Colors.grey[300];
   static final shimmerHighlightColor = Colors.grey[100];
 
-  static final transparent = Colors.transparent;
+  static const transparent = Colors.transparent;
 }

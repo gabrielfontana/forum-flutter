@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AlignTextbutton extends StatelessWidget {
+class AlignTextButton extends StatelessWidget {
   final String label;
   final Function() onPressed;
   final AlignmentGeometry alignment;
 
-  const AlignTextbutton({
+  const AlignTextButton({
     Key? key,
     required this.label,
     required this.onPressed,

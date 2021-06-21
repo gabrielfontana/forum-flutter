@@ -25,6 +25,7 @@ class UserModel extends Equatable {
       token: map.get('sessionToken'),
     );
   }
+
   @override
   List<Object?> get props => [uid, name, email, avatar, token];
 }

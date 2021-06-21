@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:forum/core/helpers/services_helper.dart';
-
 import 'action_tile.dart';
 
 class AddressTile extends StatelessWidget {

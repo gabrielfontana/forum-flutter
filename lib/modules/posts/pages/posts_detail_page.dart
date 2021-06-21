@@ -54,7 +54,7 @@ class _PostsDetailPageState
         children: [
           PostHeader(post: widget.post),
           Text(widget.post.title, style: AppTextStyles.titleBlack),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 10),
           Text(widget.post.description, style: AppTextStyles.subtitleBlack),
         ],
       ),
@@ -74,29 +74,27 @@ class _PostsDetailPageState
 
   Widget _buildInput() {
     return Container(
-      padding: const EdgeInsets.only(left: 20.0),
+      padding: const EdgeInsets.only(left: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Observer(
-            builder: (_) {
-              return Expanded(
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Digite seu comentário...',
-                  ),
-                  maxLines: null,
-                  initialValue: controller.comment,
-                  onChanged: controller.setComment,
+          Observer(builder: (_) {
+            return Expanded(
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Digite seu comentário...',
                 ),
-              );
-            },
-          ),
+                maxLines: null,
+                initialValue: controller.comment,
+                onChanged: controller.setComment,
+              ),
+            );
+          }),
           IconButton(
             onPressed: controller.createComment,
             icon: const Icon(Icons.send),
-          ),
+          )
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LogoutDialog {
@@ -8,9 +7,10 @@ class LogoutDialog {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Sair do aplicativo'),
-          content:
-              const Text('Você tem certeza de que deseja sair do aplicativo?'),
+          title: const Text('Sair do app'),
+          content: const Text(
+            'Você tem certeza que deseja sair do aplicativo?',
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
